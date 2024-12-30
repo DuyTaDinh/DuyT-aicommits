@@ -80,6 +80,14 @@ const configParsers = {
 
 		return url;
 	},
+	base_url(url?: string) {
+        if (!url || url.length === 0) {
+            return 'https://api.openai.com'; // Default base URL
+        }
+
+        parseAssert('base_url', /^https?:\/\//.test(url), 'Must be a valid Base URL');
+        return url;
+    },
 	model(model?: string) {
 		if (!model || model.length === 0) {
 			return 'gpt-3.5-turbo';
